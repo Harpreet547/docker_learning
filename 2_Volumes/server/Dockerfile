@@ -17,4 +17,10 @@ EXPOSE 80
 # To check existing volumes use docker volume ls
 # VOLUME [ "/app/feedback" ]
 
+# Addning node_modules to anonymous volume will store it in host machine.
+# But this volume will be deleted once container stops
+# This could help with performance as modules are stored in storage not in container's read write layer and that means memory or ram of the host system?
+# need to confirm this
+VOLUME [ "/app/node_modules" ]
+
 CMD [ "node", "server.js" ]
